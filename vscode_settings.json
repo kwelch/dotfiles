@@ -1,1 +1,24 @@
-/Users/welchk/Library/Application Support/Code/User/settings.json
+{
+  "files.exclude": {
+    "**/.idea": true,
+    "**/~": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true
+  },
+  "files.autoSave": "off",
+  "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, monospace",
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.renderIndentGuides": false,
+  "editor.tabSize": 2,
+  // "eslint.autoFixOnSave": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "terminal.external.osxExec": "iTerm.app",
+  "vsicons.projectDetection.autoReload": true,
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "DesertEx",
+  "workbench.iconTheme": "vscode-icons"
+}

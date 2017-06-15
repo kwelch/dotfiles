@@ -1,0 +1,39 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "ctrl+cmd+n",
+    "command": "explorer.newFolder"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "git.push"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "git.pushTo"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "git.commit"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "git.commitAll"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "git.checkout"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "git.branch"
+  },
+  {
+    "key": "alt+l",
+    "command": "editor.action.transformToLowercase"
+  }
+]
