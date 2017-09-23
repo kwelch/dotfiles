@@ -5,8 +5,12 @@
     "command": "explorer.newFile"
   },
   {
-    "key": "ctrl+cmd+n",
+    "key": "shift+cmd+n",
     "command": "explorer.newFolder"
+  },
+  {
+    "key": "alt+cmd+n",
+    "command": "workbench.action.files.newUntitledFile"
   },
   {
     "key": "ctrl+p",
@@ -31,9 +35,5 @@
   {
     "key": "ctrl+shift+b",
     "command": "git.branch"
-  },
-  {
-    "key": "alt+l",
-    "command": "editor.action.transformToLowercase"
   }
 ]

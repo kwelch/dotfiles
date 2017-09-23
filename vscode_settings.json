@@ -13,12 +13,11 @@
   "editor.minimap.enabled": false,
   "editor.renderIndentGuides": false,
   "editor.tabSize": 2,
-  // "eslint.autoFixOnSave": true,
+  "prettier.eslintIntegration": true,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
-  "terminal.external.osxExec": "iTerm.app",
   "vsicons.projectDetection.autoReload": true,
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "DesertEx",
+  "workbench.colorTheme": "Monokai Dimmed",
   "workbench.iconTheme": "vscode-icons"
 }
