@@ -14,7 +14,7 @@ TEAL=$(tput setaf 6);
 WHITE=$(tput setaf 7)
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    source $(brew --prefix)/etc/bash_completion
+  source $(brew --prefix)/etc/bash_completion
 fi
 
 function git_branch {
@@ -31,7 +31,7 @@ rand_element () {
 }
 
 #Default Prompt
-PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$(rand_element 💥 🔥 👾 🚀 ⛄️ 🍕 💰 👻 🐙 🌮 )  $ ";
+PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";
 #PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$ ";
 
 # history size
