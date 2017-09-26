@@ -7,6 +7,8 @@
 
 # npm
 npm-debug.log
+##node
+node_modules/
 
 # VS Code
 typings/
