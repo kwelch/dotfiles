@@ -3,16 +3,28 @@
 
 # WebStorm
 .idea/
-*.iml
 
 # npm
 npm-debug.log
-##node
-node_modules/
+
+# yarn
+yarn-error.log
+
+# VIM
+*.un~
+Session.vim
+.netrwhist
+*~
+*.swp
+.lvimrc
 
 # VS Code
 typings/
 .vscode
+
+# PayPal project specific stuff
+.nvmrc
+.agignore
 
 # Over-arching stuff
 *.ignored/
@@ -20,3 +32,6 @@ typings/
 
 # git
 *.patch
+
+# eslint
+.eslintcache

@@ -16,6 +16,10 @@ WHITE=$(tput setaf 7)
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   source $(brew --prefix)/etc/bash_completion
 fi
+# adds git autocomplete to bash
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
 
 function git_branch {
   # Shows the current branch if in a git repository
@@ -48,5 +52,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # alias hub as git (allows for extra fun commands)
 eval "$(hub alias -s)"
-# adds git autocomplete to bash
-source ~/git-completion.bash
+
+# alias
+alias ll="ls -al";
+
