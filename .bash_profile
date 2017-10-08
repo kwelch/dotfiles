@@ -21,23 +21,6 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
 
-function git_branch {
-  # Shows the current branch if in a git repository
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \(\1\)/';
-}
-rand() {
-  printf $((  $1 *  RANDOM  / 32767   ))
-}
-rand_element () {
-  local -a th=("$@")
-  unset th[0]
-  printf $'%s\n' "${th[$(($(rand "${#th[*]}")+1))]}"
-}
-
-#Default Prompt
-PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";
-#PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$ ";
-
 # history size
 HISTSIZE=5000
 HISTFILESIZE=10000
@@ -56,3 +39,22 @@ eval "$(hub alias -s)"
 # alias
 alias ll="ls -al";
 
+
+
+
+function git_branch {
+  # Shows the current branch if in a git repository
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \(\1\)/';
+}
+rand() {
+  printf $((  $1 *  RANDOM  / 32767   ))
+}
+rand_element () {
+  local -a th=("$@")
+  unset th[0]
+  printf $'%s\n' "${th[$(($(rand "${#th[*]}")+1))]}"
+}
+
+#Default Prompt
+PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";
+#PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$ ";
