@@ -3,7 +3,15 @@ export TERM=xterm-256color
 # PATH ALTERATIONS
 ## Node
 PATH="/usr/local/bin:$PATH:./node_modules/.bin";
+PATH="/usr/local/opt/python/libexec/bin:$PATH";
+
 export EDITOR="code --wait"
+export REPO_HOME=$HOME/eventbrite;
+
+# variable for EB
+export BAY_HOME=$REPO_HOME/docker-dev;
+export ARCANIST_INSTALL_DIR=/Users/kwelch/.evbdevtools
+source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
 
 export NVM_DIR=$HOME/.nvm
 source /usr/local/opt/nvm/nvm.sh
@@ -62,6 +70,43 @@ mkcd() {
         fi
 }
 
+function daily-notes {
+    notes_file="$HOME/Documents/notes/daily/`date +%Y%m%d`.md"
+
+    if [ ! -f $notes_file ]; then
+        cp "$HOME/Documents/notes/daily-notes-template.md" $notes_file
+    fi
+
+    counter=1
+    max_days=31
+    notes_to_open="$notes_file"
+    previous_notes="$HOME/Documents/notes/daily/`date -v-${counter}d +%Y%m%d`.md"
+    until [ -f $previous_notes -o $counter -gt $max_days ]; do
+        counter=$((counter+1))
+        previous_notes="$HOME/Documents/notes/daily/`date -v-${counter}d +%Y%m%d`.md"
+    done
+
+    if [ -f $previous_notes ]; then
+        notes_to_open="$previous_notes ${notes_to_open}"
+    fi
+
+    macdown $notes_to_open
+}
+
+function start-day {
+    # Pre-cache sudo credentials for 15min
+    sudo -v
+
+    for APP in Docker "Google Chrome" Slack ; do
+        open -a "$APP"
+    done
+
+    daily-notes
+
+    cd $REPO_HOME && update_eb_repos -f
+    cd $REPO_HOME/docker-dev && dm_start && bay build profile
+    cd $HOME
+}
 
 function git_branch {
   # Shows the current branch if in a git repository
