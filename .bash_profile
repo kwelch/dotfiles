@@ -3,6 +3,7 @@ export TERM=xterm-256color
 # PATH ALTERATIONS
 ## Node
 PATH="/usr/local/bin:$PATH:./node_modules/.bin";
+EDITOR="code"
 
 #PROMPT STUFF
 RED=$(tput setaf 1);
@@ -37,9 +38,26 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(hub alias -s)"
 
 # alias
-alias ll="ls -al";
+# long format with additional seetings
+### F = adds special character to indicate useage
+### G for color
+### l = long list format,
+### A = skips `.` & `..`
+### h = use M/K/G for size
+alias ll='ls -FGlAh'
+alias mkdir='mkdir -pv' # p = create dirs missing in path, v=list as they are created
+alias cp='cp -iv' # i = interatice, v = verbose
+alias ~="cd ~" # go home
+alias path='echo -e ${PATH//:/\\n}' #list path with, each directory new lined
 
-
+# make then cd into directory
+mkcd() {
+        if [ $# != 1 ]; then
+                echo "Usage: mkcd <dir>"
+        else
+                mkdir -p $1 && cd $1
+        fi
+}
 
 
 function git_branch {
