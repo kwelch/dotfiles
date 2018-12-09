@@ -11,3 +11,9 @@
   co = "checkout"
 [hub]
   protocol = https
+[core]
+  editor="code --wait"
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
