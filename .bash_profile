@@ -3,7 +3,7 @@ export TERM=xterm-256color
 # PATH ALTERATIONS
 ## Node
 PATH="/usr/local/bin:$PATH:./node_modules/.bin";
-EDITOR="code"
+export EDITOR="code --wait"
 
 #PROMPT STUFF
 RED=$(tput setaf 1);
@@ -12,11 +12,8 @@ YELLOW=$(tput setaf 3);
 BLUE=$(tput setaf 4);
 PINK=$(tput setaf 5);
 TEAL=$(tput setaf 6);
-WHITE=$(tput setaf 7)
+WHITE=$(tput setaf 7);
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  source $(brew --prefix)/etc/bash_completion
-fi
 # adds git autocomplete to bash
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
@@ -26,9 +23,10 @@ fi
 HISTSIZE=5000
 HISTFILESIZE=10000
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm use 8
 
 # alias hub as git (allows for extra fun commands)
 eval "$(hub alias -s)"
