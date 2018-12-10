@@ -5,7 +5,11 @@ export TERM=xterm-256color
 PATH="/usr/local/bin:$PATH:./node_modules/.bin";
 export EDITOR="code --wait"
 
-#PROMPT STUFF
+export NVM_DIR=$HOME/.nvm
+source /usr/local/opt/nvm/nvm.sh
+nvm use 8
+
+#COLORS
 RED=$(tput setaf 1);
 GREEN=$(tput setaf 2);
 YELLOW=$(tput setaf 3);
@@ -27,6 +31,7 @@ export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm use 8
+nvm use --delete-prefix v8.11.2 --silent
 
 # alias hub as git (allows for extra fun commands)
 eval "$(hub alias -s)"
@@ -68,5 +73,4 @@ rand_element () {
 }
 
 #Default Prompt
-PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";
-#PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$ ";
+PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n\D{%T} $(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";
