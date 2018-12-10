@@ -5,8 +5,8 @@ export TERM=xterm-256color
 PATH="/usr/local/bin:$PATH:./node_modules/.bin";
 PATH="/usr/local/opt/python/libexec/bin:$PATH";
 
-export EDITOR="code --wait"
 export REPO_HOME=$HOME/eventbrite;
+export EDITOR="code --wait";
 
 # variable for EB
 export BAY_HOME=$REPO_HOME/docker-dev;
@@ -39,11 +39,22 @@ fi
 HISTSIZE=5000
 HISTFILESIZE=10000
 
-export NVM_DIR=$HOME/.nvm
+# Add command to PROMPT_COMMAND (runs before each command)
+# Makes sure ithe command is not already in PROMPT_COMMAND
+addToPromptCommand() {
+  if [[ ":$PROMPT_COMMAND:" != *":$1:"* ]]; then
+    PROMPT_COMMAND="${PROMPT_COMMAND:+"$PROMPT_COMMAND:"}$1"
+  fi
+}
+
+# Set iTerm title to show current directory
+if [ $ITERM_SESSION_ID ]; then
+  addToPromptCommand 'echo -ne "\033];${PWD##*/}\007"'
+fi
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use 8
-nvm use --delete-prefix v8.11.2 --silent
+nvm use --silent
 
 # alias hub as git (allows for extra fun commands)
 eval "$(hub alias -s)"
@@ -70,43 +81,6 @@ mkcd() {
         fi
 }
 
-function daily-notes {
-    notes_file="$HOME/Documents/notes/daily/`date +%Y%m%d`.md"
-
-    if [ ! -f $notes_file ]; then
-        cp "$HOME/Documents/notes/daily-notes-template.md" $notes_file
-    fi
-
-    counter=1
-    max_days=31
-    notes_to_open="$notes_file"
-    previous_notes="$HOME/Documents/notes/daily/`date -v-${counter}d +%Y%m%d`.md"
-    until [ -f $previous_notes -o $counter -gt $max_days ]; do
-        counter=$((counter+1))
-        previous_notes="$HOME/Documents/notes/daily/`date -v-${counter}d +%Y%m%d`.md"
-    done
-
-    if [ -f $previous_notes ]; then
-        notes_to_open="$previous_notes ${notes_to_open}"
-    fi
-
-    macdown $notes_to_open
-}
-
-function start-day {
-    # Pre-cache sudo credentials for 15min
-    sudo -v
-
-    for APP in Docker "Google Chrome" Slack ; do
-        open -a "$APP"
-    done
-
-    daily-notes
-
-    cd $REPO_HOME && update_eb_repos -f
-    cd $REPO_HOME/docker-dev && dm_start && bay build profile
-    cd $HOME
-}
 
 function git_branch {
   # Shows the current branch if in a git repository
