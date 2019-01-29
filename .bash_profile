@@ -1,10 +1,5 @@
 export TERM=xterm-256color
 
-# PATH ALTERATIONS
-## Node
-PATH="/usr/local/bin:$PATH:./node_modules/.bin";
-PATH="/usr/local/opt/python/libexec/bin:$PATH";
-
 export REPO_HOME=$HOME/eventbrite;
 export EDITOR="code --wait";
 
