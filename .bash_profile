@@ -9,6 +9,10 @@ export NVM_DIR=$HOME/.nvm
 source /usr/local/opt/nvm/nvm.sh
 nvm use 8
 
+# PATH ALTERATIONS
+### add node_modules first to prefer local bin over glbally installed
+PATH="./node_modules/.bin:$PATH";
+
 #COLORS
 RED=$(tput setaf 1);
 GREEN=$(tput setaf 2);
