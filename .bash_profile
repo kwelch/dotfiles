@@ -8,9 +8,9 @@ export BAY_HOME=$REPO_HOME/docker-dev;
 export ARCANIST_INSTALL_DIR=/Users/kwelch/.evbdevtools
 source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
 
-export NVM_DIR=$HOME/.nvm
+export NVM_DIR=~/.nvm
 source /usr/local/opt/nvm/nvm.sh
-nvm use 8
+nvm use --silent
 
 # PATH ALTERATIONS
 ### add node_modules first to prefer local bin over glbally installed
