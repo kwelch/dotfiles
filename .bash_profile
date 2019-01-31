@@ -10,7 +10,7 @@ source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
 
 export NVM_DIR=~/.nvm
 source /usr/local/opt/nvm/nvm.sh
-nvm use --silent
+nvm use
 
 # PATH ALTERATIONS
 ### add node_modules first to prefer local bin over glbally installed
