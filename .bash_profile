@@ -76,6 +76,15 @@ mkcd() {
         fi
 }
 
+init_repo() {
+  mkcd $1
+  git init
+  npx license mit > LICENSE
+  npx gitignore node
+  npx covgen kwelch0626@gmail.com
+  npm init -y
+}
+
 
 function git_branch {
   # Shows the current branch if in a git repository
