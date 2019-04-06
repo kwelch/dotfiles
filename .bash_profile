@@ -12,10 +12,6 @@ export NVM_DIR=~/.nvm
 source /usr/local/opt/nvm/nvm.sh
 nvm use
 
-# PATH ALTERATIONS
-### add node_modules first to prefer local bin over glbally installed
-PATH="./node_modules/.bin:$PATH";
-
 #COLORS
 RED=$(tput setaf 1);
 GREEN=$(tput setaf 2);
@@ -33,24 +29,6 @@ fi
 # history size
 HISTSIZE=5000
 HISTFILESIZE=10000
-
-# Add command to PROMPT_COMMAND (runs before each command)
-# Makes sure ithe command is not already in PROMPT_COMMAND
-addToPromptCommand() {
-  if [[ ":$PROMPT_COMMAND:" != *":$1:"* ]]; then
-    PROMPT_COMMAND="${PROMPT_COMMAND:+"$PROMPT_COMMAND:"}$1"
-  fi
-}
-
-# Set iTerm title to show current directory
-if [ $ITERM_SESSION_ID ]; then
-  addToPromptCommand 'echo -ne "\033];${PWD##*/}\007"'
-fi
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use --silent
-
 # alias hub as git (allows for extra fun commands)
 eval "$(hub alias -s)"
 
@@ -79,10 +57,10 @@ mkcd() {
 init_repo() {
   mkcd $1
   git init
+  npm init -y
   npx license mit > LICENSE
   npx gitignore node
   npx covgen kwelch0626@gmail.com
-  npm init -y
 }
 
 
