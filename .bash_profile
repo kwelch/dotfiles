@@ -7,11 +7,7 @@ export EDITOR="code --wait"
 
 export NVM_DIR=$HOME/.nvm
 source /usr/local/opt/nvm/nvm.sh
-nvm use 8
-
-# PATH ALTERATIONS
-### add node_modules first to prefer local bin over glbally installed
-PATH="./node_modules/.bin:$PATH";
+nvm use
 
 #COLORS
 RED=$(tput setaf 1);
@@ -30,12 +26,6 @@ fi
 # history size
 HISTSIZE=5000
 HISTFILESIZE=10000
-
-export NVM_DIR=$HOME/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use 8
-nvm use --delete-prefix v8.11.2 --silent
 
 # alias hub as git (allows for extra fun commands)
 eval "$(hub alias -s)"
@@ -65,10 +55,10 @@ mkcd() {
 init_repo() {
   mkcd $1
   git init
+  npm init -y
   npx license mit > LICENSE
   npx gitignore node
   npx covgen kwelch0626@gmail.com
-  npm init -y
 }
 
 
