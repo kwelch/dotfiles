@@ -5,7 +5,11 @@ export TERM=xterm-256color
 PATH="/usr/local/bin:$PATH:./node_modules/.bin";
 export EDITOR="code --wait"
 
-#PROMPT STUFF
+export NVM_DIR=$HOME/.nvm
+source /usr/local/opt/nvm/nvm.sh
+nvm use
+
+#COLORS
 RED=$(tput setaf 1);
 GREEN=$(tput setaf 2);
 YELLOW=$(tput setaf 3);
@@ -53,6 +57,15 @@ mkcd() {
         fi
 }
 
+init_repo() {
+  mkcd $1
+  git init
+  npm init -y
+  npx license mit > LICENSE
+  npx gitignore node
+  npx covgen kwelch0626@gmail.com
+}
+
 
 function git_branch {
   # Shows the current branch if in a git repository
@@ -68,5 +81,4 @@ rand_element () {
 }
 
 #Default Prompt
-PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";
-#PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n$ ";
+PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n\D{%T} $(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";

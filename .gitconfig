@@ -2,10 +2,10 @@
   name=Kyle Welch
   email=kwelch0626@gmail.com
 [color]
-  status=auto
-  branch=auto
-  interactive=auto
-  diff=auto
+  status = auto
+  branch = auto
+  interactive = auto
+  diff = auto
 [alias]
   st = "status -sb"
   co = "checkout"
