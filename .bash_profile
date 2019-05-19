@@ -82,3 +82,6 @@ rand_element () {
 
 #Default Prompt
 PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n\D{%T} $(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
