@@ -10,7 +10,7 @@
   st = "status -sb"
   co = "checkout"
 [hub]
-  protocol = https
+  protocol = ssh
 [core]
   editor="code --wait"
 [diff]
