@@ -1,3 +1,5 @@
+#!/usr/bash
+
 export TERM=xterm-256color
 
 # PATH ALTERATIONS
@@ -66,10 +68,14 @@ init_repo() {
   npx covgen kwelch0626@gmail.com
 }
 
+function is_working_dir_dirty {
+  [[ "$(git status --porcelain)" == "" ]] && echo "" || echo "*"
+}
 
 function git_branch {
+  branch_color="$([ "$(is_working_dir_dirty)" == "" ] && echo $GREEN || echo $RED)"
   # Shows the current branch if in a git repository
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \(\1\)/';
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s@* \(.*\)@${branch_color}\ \(\1$(is_working_dir_dirty)\)@";
 }
 rand() {
   printf $((  $1 *  RANDOM  / 32767   ))
@@ -81,7 +87,8 @@ rand_element () {
 }
 
 #Default Prompt
-PS1="${BLUE}\w${GREEN}\$(git_branch)${WHITE}\n\D{%T} $(rand_element 🔥 🚀 🍕 👻 🐙 )  $ ";
+PS1="\[${BLUE}\]\w\$(git_branch)\[${WHITE}\]\n\D{%T} $ ";
 
-# Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
