@@ -9,6 +9,8 @@
 [alias]
   st = "status -sb"
   co = "checkout"
+[hub]
+  protocol = ssh
 [core]
   editor="code --wait"
 	excludesfile = /Users/kwelch/.gitignore_global
