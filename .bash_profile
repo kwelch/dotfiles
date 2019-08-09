@@ -19,6 +19,7 @@ BLUE=$(tput setaf 4);
 PINK=$(tput setaf 5);
 TEAL=$(tput setaf 6);
 WHITE=$(tput setaf 7);
+RESET=$(tput sgr0);
 
 # adds git autocomplete to bash
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
@@ -87,7 +88,7 @@ rand_element () {
 }
 
 #Default Prompt
-PS1="\[${BLUE}\]\w\$(git_branch)\[${WHITE}\]\n\D{%T} $ ";
+PS1="\[${BLUE}\]\w\$(git_branch)\[${RESET}\]\n\D{%T} $ ";
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
