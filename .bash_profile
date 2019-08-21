@@ -67,7 +67,7 @@ init_repo() {
 }
 
 function is_working_dir_dirty {
-  [[ "$(git status --porcelain)" == "" ]] && echo "" || echo "*"
+  [[ "$(git status --porcelain 2> /dev/null)" == "" ]] && echo "" || echo "*"
 }
 
 function git_branch {
