@@ -20,3 +20,5 @@
     cmd = code --wait --diff $LOCAL $REMOTE
 [branch]
   autosetuprebase = always
+[includeIf "gitdir:~/eventbrite/"]
+  path = ~/eventbrite/.gitconfig
