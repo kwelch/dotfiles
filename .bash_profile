@@ -48,6 +48,7 @@ alias cp='cp -iv' # i = interatice, v = verbose
 alias ~="cd ~" # go home
 alias path='echo -e ${PATH//:/\\n}' #list path with, each directory new lined
 
+
 # make then cd into directory
 mkcd() {
         if [ $# != 1 ]; then
@@ -65,6 +66,21 @@ init_repo() {
   npx gitignore node
   npx covgen kwelch0626@gmail.com
 }
+
+random-string() {
+    LC_CTYPE=C tr -dc A-Za-z0-9 < /dev/urandom | fold -w ${1:-32} | head -n 1
+}
+
+temp_branch() {
+  string=$(random-string 32)
+  branch_name="temp-${string}"
+  git co -b "$branch_name"
+}
+
+delete_temp_branches() {
+  git branch | grep "temp-" | xargs git branch -D
+}
+
 
 function is_working_dir_dirty {
   [[ "$(git status --porcelain 2> /dev/null)" == "" ]] && echo "" || echo "*"
