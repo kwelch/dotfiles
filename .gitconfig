@@ -1,6 +1,6 @@
 [user]
-  name=Kyle Welch
-  email=kwelch0626@gmail.com
+  name = Kyle Welch
+  email = kwelch0626@gmail.com
 [color]
   status = auto
   branch = auto
@@ -13,7 +13,10 @@
   protocol = ssh
 [core]
   editor="code --wait"
+	excludesfile = /Users/kwelch/.gitignore_global
 [diff]
     tool = vscode
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[branch]
+  autosetuprebase = always
