@@ -9,6 +9,7 @@
 [alias]
   st = "status -sb"
   co = "checkout"
+  chp = !git checkout $1 && git pull && :
 [hub]
   protocol = ssh
 [core]
