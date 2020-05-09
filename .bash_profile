@@ -1,14 +1,12 @@
 #!/usr/bash
 
 export TERM=xterm-256color
-
-export REPO_HOME=$HOME/eventbrite;
 export EDITOR="code --wait";
 
 # variable for EB
-export BAY_HOME=$REPO_HOME/docker-dev;
-export ARCANIST_INSTALL_DIR=/Users/kwelch/.evbdevtools
-source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
+
+# EB secret things
+source ~/.bash_eb
 
 export NVM_DIR=~/.nvm
 source /usr/local/opt/nvm/nvm.sh
@@ -103,6 +101,7 @@ rand_element () {
 #Default Prompt
 PS1="\[${BLUE}\]\w\$(git_branch)\[${RESET}\]\n\D{%T} $ ";
 
+# Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
