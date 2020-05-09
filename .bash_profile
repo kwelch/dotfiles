@@ -1,15 +1,12 @@
 #!/usr/bash
+###############################################################################
+##
+## THIS FILE IS ONLY RUN FOR INTERACTIVE MODE
+##
+###############################################################################
 
 export TERM=xterm-256color
-
-# PATH ALTERATIONS
-## Node
-PATH="/usr/local/bin:$PATH:./node_modules/.bin";
 export EDITOR="code --wait"
-
-export NVM_DIR=$HOME/.nvm
-source /usr/local/opt/nvm/nvm.sh
-nvm use
 
 #COLORS
 RED=$(tput setaf 1);
@@ -21,6 +18,9 @@ TEAL=$(tput setaf 6);
 WHITE=$(tput setaf 7);
 RESET=$(tput sgr0);
 
+# Pull in the RC file
+if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+
 # adds git autocomplete to bash
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
@@ -29,11 +29,6 @@ fi
 # history size
 HISTSIZE=5000
 HISTFILESIZE=10000
-
-export NVM_DIR=$HOME/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use 8
 
 # alias hub as git (allows for extra fun commands)
 eval "$(hub alias -s)"
