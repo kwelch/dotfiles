@@ -10,6 +10,7 @@
   st = "status -sb"
   co = "checkout"
   chp = !git checkout $1 && git pull && :
+  nb = "checkout -b "
 [hub]
   protocol = ssh
 [core]
@@ -21,3 +22,5 @@
     cmd = code --wait --diff $LOCAL $REMOTE
 [branch]
   autosetuprebase = always
+[push]
+	default = current
