@@ -1,18 +1,14 @@
 #!/usr/bash
+###############################################################################
+##
+## THIS FILE IS ONLY RUN FOR INTERACTIVE MODE
+##
+###############################################################################
 
 export TERM=xterm-256color
-export EDITOR="code --wait";
+export EDITOR="code --wait"
 
-# variable for EB
-
-# EB secret things
-source ~/.bash_eb
-
-export NVM_DIR=~/.nvm
-source /usr/local/opt/nvm/nvm.sh
-nvm use
-
-#COLORS
+# COLORS
 RED=$(tput setaf 1);
 GREEN=$(tput setaf 2);
 YELLOW=$(tput setaf 3);
@@ -22,6 +18,12 @@ TEAL=$(tput setaf 6);
 WHITE=$(tput setaf 7);
 RESET=$(tput sgr0);
 
+# Pull in the RC file
+if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+
+# EB secret things
+source ~/.bash_eb
+
 # adds git autocomplete to bash
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
@@ -30,6 +32,10 @@ fi
 # history size
 HISTSIZE=5000
 HISTFILESIZE=10000
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 # alias hub as git (allows for extra fun commands)
 eval "$(hub alias -s)"
 
