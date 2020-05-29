@@ -97,3 +97,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+## Ideally, I wouldn't need the home part, but I cannot figure out how to make these relative when linked
+
+DOTFILE_REPO=$HOME/_git/dotfiles
+
+source $DOTFILE_REPO/terminal-helpers/path-alteration.sh
+source $DOTFILE_REPO/terminal-helpers/set-editor.sh
+source $DOTFILE_REPO/terminal-helpers/nvm-setup.sh
+source $DOTFILE_REPO/terminal-helpers/setup-branch-functions.sh

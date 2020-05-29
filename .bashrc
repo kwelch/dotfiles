@@ -7,12 +7,5 @@
 ##
 ###############################################################################
 
-## PATH ALTERATIONS
-# Add node modules to allow calling local node modules without prefix of yarn|npm
-PATH="/usr/local/bin:$PATH:./node_modules/.bin";
-
-## Setup NVM
-export NVM_DIR=$HOME/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use
+source ./terminal-helpers/path-alteration.sh
+source ./terminal-helpers/nvm-setup.sh
