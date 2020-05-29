@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ln -is $PWD/.bashrc ~/.bashrc
+ln -is $PWD/.zshrc ~/.zshrc
 ln -is $PWD/.bash_profile ~/.bash_profile
 ln -is $PWD/.gitignore_global ~/.gitignore_global
 ln -is $PWD/.gitconfig ~/.gitconfig
