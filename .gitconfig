@@ -11,7 +11,7 @@
   co = "checkout"
   # check out and pull all in one call; `:` at the end it to fix how git appends params
   chp = !git checkout $1 && git pull && :
-  nb = "checkout -b "
+  nb = "checkout -b"
 [hub]
   protocol = ssh
 [core]
