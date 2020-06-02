@@ -7,7 +7,6 @@
 
 export TERM=xterm-256color
 
-source ./terminal-helpers/set-editor.sh
 
 # COLORS
 RED=$(tput setaf 1);
@@ -21,6 +20,8 @@ RESET=$(tput sgr0);
 
 # Pull in the RC file
 if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+
+source $DOTFILE_REPO/terminal-helpers/set-editor.sh
 
 # EB secret things
 source ~/setup-eb
@@ -69,7 +70,7 @@ init_repo() {
   npx covgen kwelch0626@gmail.com
 }
 
-source ./terminal-helpers/setup-branch-functions.sh
+source $DOTFILE_REPO/terminal-helpers/setup-branch-functions.sh
 
 
 function is_working_dir_dirty {

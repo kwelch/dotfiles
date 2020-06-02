@@ -7,5 +7,7 @@
 ##
 ###############################################################################
 
-source ./terminal-helpers/path-alteration.sh
-source ./terminal-helpers/nvm-setup.sh
+export DOTFILE_REPO=$HOME/_git/dotfiles
+
+source $DOTFILE_REPO/terminal-helpers/path-alteration.sh
+source $DOTFILE_REPO/terminal-helpers/nvm-setup.sh
