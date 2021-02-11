@@ -32,8 +32,6 @@ fi
 HISTSIZE=5000
 HISTFILESIZE=10000
 
-# alias hub as git (allows for extra fun commands)
-eval "$(hub alias -s)"
 
 # alias
 # long format with additional seetings
