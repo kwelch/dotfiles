@@ -24,3 +24,5 @@
 [push]
   # auto attach upstream with same name as local branch
 	default = current
+[init]
+	defaultBranch = main
