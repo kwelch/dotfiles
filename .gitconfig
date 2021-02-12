@@ -28,3 +28,6 @@
 [push]
   # auto attach upstream with same name as local branch
 	default = current
+[pull]
+  # auto attach upstream with same name as local branch
+	default = current
