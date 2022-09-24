@@ -5,7 +5,7 @@ random_string() {
 }
 
 temp_branch() {
-  string=$(random-string 32)
+  string=$(random_string 32)
   branch_name="temp-${string}"
   git co -b "$branch_name"
 }
