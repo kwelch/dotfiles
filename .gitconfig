@@ -1,6 +1,7 @@
 [user]
   name = Kyle Welch
   email = kwelch0626@gmail.com
+	signingkey =
 [color]
   status = auto
   branch = auto
@@ -14,7 +15,7 @@
   nb = "checkout -b"
 [core]
   editor="code --wait"
-	excludesfile = /Users/kwelch/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [diff]
     tool = vscode
 [difftool "vscode"]
@@ -26,3 +27,7 @@
 	default = current
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true
+[include]
+	path = ~/.gitsecrets
