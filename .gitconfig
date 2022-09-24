@@ -1,5 +1,7 @@
 [user]
   name = Kyle Welch
+  email = 1295580+kwelch@users.noreply.github.com
+  signingkey = 90B59FFCEAD4E56A
 [color]
   status = auto
   branch = auto
@@ -27,5 +29,3 @@
 	defaultBranch = main
 [commit]
 	gpgsign = true
-[include]
-	path = ~/.gitsecrets
