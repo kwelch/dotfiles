@@ -8,13 +8,13 @@ export ZSH="${HOME}/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="geoffgarside"
+ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "af-magic" "clean" "geoffgarside" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -98,7 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 ## Ideally, I wouldn't need the home part, but I cannot figure out how to make these relative when linked
 export DOTFILE_REPO=$HOME/_git/dotfiles
 export GPG_TTY=$(tty)
@@ -107,4 +106,4 @@ source $DOTFILE_REPO/terminal-helpers/path-alteration.sh
 source $DOTFILE_REPO/terminal-helpers/set-editor.sh
 source $DOTFILE_REPO/terminal-helpers/nvm-setup.sh
 source $DOTFILE_REPO/terminal-helpers/setup-branch-functions.sh
-source "$HOME/.cargo/env"
+[ -d "/path/to/dir" ] && source "$HOME/.cargo/env"
