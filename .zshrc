@@ -106,4 +106,6 @@ source $DOTFILE_REPO/terminal-helpers/path-alteration.sh
 source $DOTFILE_REPO/terminal-helpers/set-editor.sh
 source $DOTFILE_REPO/terminal-helpers/nvm-setup.sh
 source $DOTFILE_REPO/terminal-helpers/setup-branch-functions.sh
-[ -d "/path/to/dir" ] && source "$HOME/.cargo/env"
+source $DOTFILE_REPO/terminal-helpers/setup-k8s.sh
+[ -d "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -f "$HOME/.workrc" ] && source "$HOME/.workrc"
