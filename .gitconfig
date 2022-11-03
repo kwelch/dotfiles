@@ -27,5 +27,7 @@
 	default = current
 [init]
 	defaultBranch = main
-[commit]
-	gpgsign = true
+[includeIf "gitdir:~/atlassian/.path=~/atlassian/"]
+	gitconfig = --verbose
+[includeIf "gitdir/i:~/atlassian/"]
+	path = ~/atlassian/.gitconfig
