@@ -25,6 +25,9 @@
 [push]
   # auto attach upstream with same name as local branch
 	default = current
+	autoSetupRemote = true
+[fetch]
+	prune = true
 [init]
 	defaultBranch = main
 [includeIf "gitdir:~/atlassian/.path=~/atlassian/"]
