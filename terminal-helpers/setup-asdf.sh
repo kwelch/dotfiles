@@ -2,3 +2,4 @@
 
 [[ ! -f ~/opt/homebrew/opt/asdf/libexec/asdf.sh ]] || source /opt/homebrew/opt/asdf/libexec/asdf.sh
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+source ~/.asdf/plugins/java/set-java-home.zsh
