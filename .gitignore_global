@@ -22,10 +22,6 @@ Session.vim
 typings/
 .vscode
 
-# PayPal project specific stuff
-.nvmrc
-.agignore
-
 # Over-arching stuff
 *.ignored/
 *.ignored.*

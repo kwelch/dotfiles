@@ -112,3 +112,5 @@ source $DOTFILE_REPO/terminal-helpers/setup-cargo.sh
 source $DOTFILE_REPO/terminal-helpers/setup-jenv.sh
 
 [ -f "$HOME/.workrc" ] && source "$HOME/.workrc"
+
+export PATH="/Users/kwelch/.orbit/bin:$PATH"

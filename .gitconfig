@@ -1,33 +1,57 @@
 [user]
-  name = Kyle Welch
-  email = 1295580+kwelch@users.noreply.github.com
-  signingkey = 90B59FFCEAD4E56A
+	name = Kyle Welch
+	email = 1295580+kwelch@users.noreply.github.com
+	signingkey = 90B59FFCEAD4E56A
 [color]
-  status = auto
-  branch = auto
-  interactive = auto
-  diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
 [alias]
-  st = "status -sb"
-  co = "checkout"
-  # check out and pull all in one call; `:` at the end it to fix how git appends params
-  chp = !git checkout $1 && git pull && :
-  nb = "checkout -b"
+	st = "status -sb"
+	co = "checkout"
+	chp = !git checkout $1 && git pull && :
+	nb = "checkout -b"
 [core]
-  editor="code --wait"
+	editor = "code --wait"
 	excludesfile = ~/.gitignore_global
+	fsmonitor = true
+	untrackedCache = true
 [diff]
-    tool = vscode
+	tool = vscode
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+	conflictStyle = zdiff3
 [difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+	cmd = code --wait --diff $LOCAL $REMOTE
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
+	sort = -committerdate
+[tag]
+	sort = version:refname
 [push]
-  # auto attach upstream with same name as local branch
-	default = current
+	default = simple
 	autoSetupRemote = true
+	followTags = true
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
+[pull]
+	rebase = true
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [init]
 	defaultBranch = main
 [includeIf "gitdir:~/atlassian/.path=~/atlassian/"]

@@ -1,7 +1,7 @@
 #!/usr/sh
 
 random_string() {
-    LC_CTYPE=C tr -dc A-Za-z0-9 < /dev/urandom | fold -w "${1:-32}" | head -n 1
+  LC_CTYPE=C tr -dc A-Za-z0-9 < /dev/urandom | fold -w "${1:-32}" | head -n 1
 }
 
 temp_branch() {
