@@ -110,6 +110,7 @@ source $DOTFILE_REPO/terminal-helpers/setup-k8s.sh
 source $DOTFILE_REPO/terminal-helpers/setup-asdf.sh
 source $DOTFILE_REPO/terminal-helpers/setup-cargo.sh
 source $DOTFILE_REPO/terminal-helpers/setup-jenv.sh
+source $DOTFILE_REPO/terminal-helpers/setup-aliases.sh
 
 [ -f "$HOME/.workrc" ] && source "$HOME/.workrc"
 
