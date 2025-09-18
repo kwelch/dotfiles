@@ -99,7 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ## Ideally, I wouldn't need the home part, but I cannot figure out how to make these relative when linked
-export DOTFILE_REPO=$HOME/_git/dotfiles
+export DOTFILE_REPO="$(dirname "$(readlink -f "$0")")"
 export GPG_TTY=$(tty)
 
 source $DOTFILE_REPO/terminal-helpers/path-alteration.sh
