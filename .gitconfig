@@ -8,10 +8,12 @@
 	interactive = auto
 	diff = auto
 [alias]
-	st = "status -sb"
 	co = "checkout"
 	chp = !git checkout $1 && git pull && :
 	nb = "checkout -b"
+[status]
+	short = true
+	branch = true
 [core]
 	editor = "code --wait"
 	excludesfile = ~/.gitignore_global
