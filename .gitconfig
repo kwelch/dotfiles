@@ -1,5 +1,0 @@
-[include]
-	path = config/git/personal.gitconfig
-
-[includeIf "gitdir/i:~/atlassian/"]
-	path = ~/atlassian/.gitconfig

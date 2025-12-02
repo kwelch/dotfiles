@@ -66,8 +66,6 @@ configure_git_includes() {
   else
     printf 'Missing personal git config: %s\n' "$personal_config"
   fi
-
-  ensure_git_config_value 'includeIf."gitdir/i:~/atlassian/".path' '~/atlassian/.gitconfig'
 }
 
 configure_git_includes
