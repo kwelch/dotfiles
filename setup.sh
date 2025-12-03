@@ -45,6 +45,71 @@ ensure_git_config_value() {
   git config --global --add "$key" "$value"
 }
 
+expand_path() {
+  local input="$1"
+  case "$input" in
+    "~"|"~/")
+      printf '%s\n' "$HOME"
+      ;;
+    ~/*)
+      printf '%s/%s\n' "$HOME" "${input#~/}"
+      ;;
+    *)
+      printf '%s\n' "$input"
+      ;;
+  esac
+}
+
+normalize_gitdir_pattern() {
+  local raw="$1"
+  local expanded
+  expanded="$(expand_path "$raw")"
+  case "$expanded" in
+    *\**|*?*|*[[]*)
+      printf '%s\n' "$expanded"
+      ;;
+    */)
+      printf '%s\n' "$expanded"
+      ;;
+    *)
+      printf '%s/\n' "$expanded"
+      ;;
+  esac
+}
+
+ensure_git_include_if() {
+  local pattern="$1"
+  local include_path="$2"
+  local key="includeIf.gitdir:$pattern.path"
+  local existing_values existing
+  existing_values=$(git config --global --get-all "$key" 2>/dev/null || true)
+  while IFS= read -r existing; do
+    [ -z "$existing" ] && continue
+    [ "$existing" = "$include_path" ] && return 0
+  done <<< "$existing_values"
+  git config --global --add "$key" "$include_path"
+}
+
+configure_work_git_include() {
+  local detected_repo="${DOTFILE_WORK_REPO:-}"
+  local default_repo="$HOME/work/dotfiles"
+  if [ -z "$detected_repo" ] && [ -d "$default_repo" ]; then
+    detected_repo="$default_repo"
+  fi
+  if [ -n "$detected_repo" ]; then
+    detected_repo="$(expand_path "$detected_repo")"
+  fi
+  [ -n "$detected_repo" ] || return 0
+
+  local work_config="$detected_repo/config/git/work.gitconfig"
+  [ -f "$work_config" ] || return 0
+
+  local gitdir_root="${DOTFILE_WORK_GITDIR:-$HOME/work/}"
+  local pattern
+  pattern="$(normalize_gitdir_pattern "$gitdir_root")"
+  ensure_git_include_if "$pattern" "$work_config"
+}
+
 configure_git_includes() {
   if ! command -v git >/dev/null 2>&1; then
     printf 'Skipping git includes (git missing)\n'
@@ -69,3 +134,4 @@ configure_git_includes() {
 }
 
 configure_git_includes
+configure_work_git_include

@@ -5,6 +5,18 @@ TOTAL_THRESHOLD_MS=300
 ZSH_STARTUP_LOG=${ZSH_STARTUP_LOG:-"$HOME/.zsh_startup_times"}
 TOOLS_ORDER=(omzsh nvm node_modules asdf jenv goenv pyenv pip cargo kubectl pnpm)
 
+load_tool_order_file() {
+  local tool_file="$1"
+  [ -f "$tool_file" ] || return
+  # shellcheck source=/dev/null
+  source "$tool_file"
+}
+
+load_tool_order_file "$DOTFILE_REPO/config/shell/tools-order.sh"
+if [ -n "${DOTFILE_OVERLAY_REPO:-}" ] && [ "$DOTFILE_OVERLAY_REPO" != "$DOTFILE_REPO" ]; then
+  load_tool_order_file "$DOTFILE_OVERLAY_REPO/config/shell/tools-order.sh"
+fi
+
 ensure_startup_log() {
   mkdir -p "$(dirname "$ZSH_STARTUP_LOG")"
   if [ ! -f "$ZSH_STARTUP_LOG" ]; then
@@ -45,12 +57,43 @@ log_entry() {
 
 run_tool_runtime() {
   local tool="$1"
-  local script="$DOTFILE_REPO/tools/$tool.sh"
+  local -a scripts=()
+  local -a roots=()
+  local base_script="$DOTFILE_REPO/tools/$tool.sh"
+  local overlay_script
+
+  if [ -f "$base_script" ]; then
+	scripts+=("$base_script")
+	roots+=("$DOTFILE_REPO")
+  fi
+  if [ -n "${DOTFILE_OVERLAY_REPO:-}" ]; then
+	overlay_script="$DOTFILE_OVERLAY_REPO/tools/$tool.sh"
+	if [ -f "$overlay_script" ] && [ "$overlay_script" != "$base_script" ]; then
+		scripts+=("$overlay_script")
+		roots+=("$DOTFILE_OVERLAY_REPO")
+	fi
+  fi
+
+  if [ "${#scripts[@]}" -eq 0 ]; then
+	return
+  fi
   local check_fn="check_${tool}"
   local runtime_fn="runtime_${tool}"
-  [ -f "$script" ] || return
-  # shellcheck source=/dev/null
-  source "$script"
+  local idx script script_root prev_repo
+  for idx in "${!scripts[@]}"; do
+	script="${scripts[$idx]}"
+	script_root="${roots[$idx]}"
+	if [ -n "$script_root" ] && [ "$script_root" != "$DOTFILE_REPO" ]; then
+		prev_repo="$DOTFILE_REPO"
+		DOTFILE_REPO="$script_root"
+		# shellcheck source=/dev/null
+		source "$script"
+		DOTFILE_REPO="$prev_repo"
+	else
+		# shellcheck source=/dev/null
+		source "$script"
+	fi
+  done
   if ! typeset -f "$check_fn" >/dev/null 2>&1 || ! typeset -f "$runtime_fn" >/dev/null 2>&1; then
     return
   fi
